@@ -202,8 +202,8 @@ ul {
 
 .header__logo {
   font-weight: 900;
-  font-size: 1.6rem;
-  letter-spacing: 0.05em;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
   color: var(--c-text);
   text-decoration: none;
 }
@@ -221,6 +221,7 @@ ul {
   font-weight: 500;
   font-size: 0.85rem;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
   transition: color 0.2s;
 }
 
@@ -407,6 +408,7 @@ ul {
 .problem-card {
   display: flex;
   align-items: stretch;
+  min-height: 100px;
   padding: 0;
   background: var(--c-bg);
   border-radius: var(--r-md);
@@ -421,8 +423,8 @@ ul {
 
 .problem-card__img {
   flex-shrink: 0;
-  width: 100px;
-  min-height: 100%;
+  width: 120px;
+  align-self: stretch;
   overflow: hidden;
 }
 .problem-card__img img {
@@ -430,6 +432,7 @@ ul {
   height: 100%;
   min-height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .problem-card__text {
@@ -1002,8 +1005,8 @@ ul {
 
 .footer__brand {
   font-weight: 900;
-  font-size: 1.5rem;
-  letter-spacing: 0.05em;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
   color: #fff;
 }
 
