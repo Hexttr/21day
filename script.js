@@ -83,35 +83,6 @@
     });
   });
 
-  /* ----------------------------------------
-     Hero parallax: mouse + scroll
-     ---------------------------------------- */
-  var heroSection = document.getElementById('heroSection');
-  var heroBg = document.getElementById('heroBg');
-  if (heroSection && heroBg) {
-    var mouseX = 0, mouseY = 0, scrollY = 0;
-    function updateParallax() {
-      heroBg.style.transform = 'translate(' + (mouseX + 0) + 'px, ' + (mouseY + scrollY) + 'px)';
-    }
-    heroSection.addEventListener('mousemove', function (e) {
-      var rect = heroSection.getBoundingClientRect();
-      mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
-      mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
-      updateParallax();
-    });
-    heroSection.addEventListener('mouseleave', function () {
-      mouseX = 0;
-      mouseY = 0;
-      updateParallax();
-    });
-    window.addEventListener('scroll', function () {
-      var rect = heroSection.getBoundingClientRect();
-      var s = -rect.top / (rect.height + 200);
-      scrollY = (s > 0 && s < 1) ? s * 40 : (s <= 0 ? 0 : 40);
-      updateParallax();
-    });
-    window.dispatchEvent(new Event('scroll'));
-  }
 })();
 
 /* ============================================

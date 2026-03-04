@@ -204,10 +204,20 @@ ul {
   font-weight: 900;
   font-size: 2rem;
   letter-spacing: 0.08em;
-  color: var(--c-text);
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
-.header__logo:hover {
+.logo-21 {
+  color: var(--c-text);
+}
+.logo-day {
+  background: var(--g-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header__logo:hover .logo-21 {
   color: var(--c-primary);
 }
 
@@ -301,13 +311,9 @@ ul {
 /* Фоновое изображение hero — путь: images/hero.jpg */
 .hero__bg {
   position: absolute;
-  inset: -10%;
-  width: 120%;
-  height: 120%;
+  inset: 0;
   background: url('images/hero.jpg') center center / cover no-repeat;
   opacity: 0.4;
-  transition: transform 0.1s ease-out;
-  will-change: transform;
 }
 
 .hero__inner {
@@ -452,6 +458,7 @@ ul {
    ============================================ */
 .for-whom {
   padding: 80px 0;
+  background: var(--c-bg-alt);
 }
 
 .for-whom__grid {
@@ -528,8 +535,8 @@ ul {
 
 .week__icon {
   flex-shrink: 0;
-  width: 64px;
-  height: 64px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   overflow: hidden;
   background: rgba(255,255,255,0.2);
@@ -850,6 +857,7 @@ ul {
    ============================================ */
 .bonuses {
   padding: 80px 0;
+  background: var(--c-bg);
 }
 
 .bonuses__grid {
@@ -875,7 +883,7 @@ ul {
 
 .bonus-card__img {
   width: 100%;
-  height: 120px;
+  height: 160px;
   overflow: hidden;
 }
 .bonus-card__img img {
@@ -1007,7 +1015,17 @@ ul {
   font-weight: 900;
   font-size: 2rem;
   letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+}
+.footer__brand .logo-21 {
   color: #fff;
+}
+.footer__brand .logo-day {
+  background: linear-gradient(135deg, #A855F7, #C084FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .footer__links {
