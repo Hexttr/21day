@@ -209,9 +209,26 @@ ul {
   gap: 6px;
 }
 
-.logo-icon {
-  color: var(--c-primary);
-  font-size: 1.4rem;
+/* Логотип 21day — кастомизация */
+.logo-21 {
+  font-weight: 900;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+  background: var(--g-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.logo-day {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--c-text);
+  letter-spacing: 0.02em;
+}
+.logo-suffix {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
 }
 
 .header__nav {
@@ -297,6 +314,18 @@ ul {
   background: var(--g-hero);
   position: relative;
   overflow: hidden;
+}
+
+/* Фоновое изображение hero — путь: images/hero.jpg */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background: url('images/hero.jpg') center center / cover no-repeat;
+  opacity: 0.35;
+  transition: opacity 0.4s ease;
+}
+.hero:hover .hero__bg {
+  opacity: 0.5;
 }
 
 .hero__inner {
@@ -409,11 +438,17 @@ ul {
   box-shadow: var(--c-card-shadow);
 }
 
-.problem-card__icon {
-  font-size: 1.5rem;
+.problem-card__img {
   flex-shrink: 0;
-  width: 40px;
-  text-align: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.problem-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .problem-card p {
@@ -448,9 +483,18 @@ ul {
   box-shadow: var(--c-card-shadow-hover);
 }
 
-.whom-card__icon {
-  font-size: 2.5rem;
-  margin-bottom: 16px;
+.whom-card__img {
+  width: 100%;
+  max-width: 140px;
+  height: 100px;
+  margin: 0 auto 16px;
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.whom-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .whom-card h3 {
@@ -675,30 +719,6 @@ ul {
 .method-card p {
   color: var(--c-text-secondary);
   font-size: 0.9rem;
-}
-
-.method__principles {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.principle {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 20px;
-  background: var(--c-bg-alt);
-  border-radius: var(--r-md);
-  box-shadow: var(--c-card-shadow);
-  font-size: 0.95rem;
-}
-
-.principle__icon {
-  font-size: 1.3rem;
-  flex-shrink: 0;
 }
 
 /* ============================================
@@ -961,6 +981,12 @@ ul {
   align-items: center;
   gap: 6px;
 }
+.footer__brand .logo-day {
+  color: rgba(255, 255, 255, 0.95);
+}
+.footer__brand .logo-suffix {
+  color: rgba(255, 255, 255, 0.6);
+}
 
 .footer__links {
   display: flex;
@@ -1210,10 +1236,6 @@ ul {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .method__principles {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .pricing__grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1249,10 +1271,6 @@ ul {
 
   .method__grid {
     grid-template-columns: repeat(4, 1fr);
-  }
-
-  .method__principles {
-    grid-template-columns: repeat(3, 1fr);
   }
 
   .bonuses__grid {

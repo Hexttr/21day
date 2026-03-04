@@ -1,3 +1,7 @@
+# Корневые дубликаты (используем images/)
+/hero.jpg
+/favicon.png
+
 # OS
 .DS_Store
 Thumbs.db
