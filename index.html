@@ -96,7 +96,7 @@
 <section class="problems" id="problems">
   <div class="container">
     <h2 class="section-title">Знакомо?</h2>
-    <p class="section-subtitle">Эти проблемы решает наш курс</p>
+    <p class="section-subtitle">Наш курс поможет вам избавиться от рутины</p>
     <div class="problems__grid">
       <div class="problem-card">
         <div class="problem-card__img"><img src="images/problem-time.webp" alt="" loading="lazy"></div>
@@ -132,7 +132,7 @@
 <section class="for-whom">
   <div class="container">
     <h2 class="section-title">Для кого этот курс</h2>
-    <p class="section-subtitle">Психологи, тарологи, нумерологи, коучи — все, кто помогает людям</p>
+    <p class="section-subtitle">Психологи, тарологи, нумерологи, коучи — все, кто помогает людям и хочет стать еще эффективнее</p>
     <div class="for-whom__grid">
       <div class="whom-card">
         <div class="whom-card__img"><img src="images/whom-psychologist.webp" alt="" loading="lazy"></div>
@@ -578,20 +578,51 @@
      ============================================ -->
 <footer class="footer">
   <div class="container footer__inner">
-    <div class="footer__brand"><span class="logo-21">21</span><span class="logo-day">DAY</span></div>
-    <div class="footer__links">
-      <a href="#program">ПРОГРАММА</a>
-      <a href="#pricing">СТОИМОСТЬ</a>
-      <a href="#faq">FAQ</a>
+    <div class="footer__top">
+      <div class="footer__brand"><span class="logo-21">21</span><span class="logo-day">DAY</span></div>
+      <nav class="footer__links">
+        <a href="#program">ПРОГРАММА</a>
+        <a href="#pricing">СТОИМОСТЬ</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="footer__contacts">
+        <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+      </div>
     </div>
-    <!-- КОНТАКТЫ: обновите ссылки -->
-    <div class="footer__contacts">
-      <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
-      <!-- <a href="mailto:info@example.com">Email</a> -->
+    <div class="footer__legal">
+      <p class="footer__requisites">ИП Кузнецов Р.С. ИНН 682 668 344 949 ОГРН 319 774 600 123 810</p>
+      <p class="footer__contact-info">
+        <a href="mailto:info@i-integrator.com">info@i-integrator.com</a>
+        <span class="footer__sep">•</span>
+        <a href="tel:+79256852525">+7 925 685-25-25</a>
+      </p>
+      <div class="footer__docs">
+        <a href="oferta.pdf" target="_blank" rel="noopener">Оферта</a>
+        <a href="#" onclick="openRulesModal(); return false;">Правила пользования</a>
+      </div>
     </div>
     <p class="footer__copy">&copy; 2026 «21 день с ИИ». Все права защищены.</p>
   </div>
 </footer>
+
+<!-- Модальное окно: Правила пользования -->
+<div class="modal-overlay" id="rulesModalOverlay">
+  <div class="modal modal--rules" id="rulesModal">
+    <button class="modal__close" onclick="closeRulesModal()" aria-label="Закрыть">&times;</button>
+    <h2 class="modal__title">Правила пользования сайтом</h2>
+    <div class="modal__rules-content">
+      <ol>
+        <li>Сайт предназначен для ознакомления с информацией о курсе «21 день с ИИ» и оформления заявки на участие.</li>
+        <li>При заполнении формы записи вы предоставляете достоверные контактные данные. Мы используем их только для связи по вопросам курса.</li>
+        <li>Оплата производится через платёжную систему Робокасса. Безопасность платежей обеспечивается протоколом SSL.</li>
+        <li>После оплаты доступ к материалам курса предоставляется в течение 24 часов на указанный при регистрации email.</li>
+        <li>Запрещается копировать, распространять и использовать материалы курса в коммерческих целях без письменного согласия правообладателя.</li>
+        <li>Используя сайт, вы соглашаетесь с <a href="oferta.pdf" target="_blank">офертой</a> и настоящими правилами.</li>
+      </ol>
+    </div>
+    <button class="btn btn--outline btn--lg" onclick="closeRulesModal()">Закрыть</button>
+  </div>
+</div>
 
 <!-- ============================================
      МОДАЛЬНОЕ ОКНО ЗАПИСИ

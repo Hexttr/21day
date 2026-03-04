@@ -429,7 +429,7 @@ ul {
 
 .problem-card__img {
   flex-shrink: 0;
-  width: 120px;
+  width: 130px;
   align-self: stretch;
   overflow: hidden;
 }
@@ -438,6 +438,7 @@ ul {
   height: 100%;
   min-height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
 }
 
@@ -458,7 +459,6 @@ ul {
    ============================================ */
 .for-whom {
   padding: 80px 0;
-  background: var(--c-bg-alt);
 }
 
 .for-whom__grid {
@@ -484,7 +484,7 @@ ul {
 
 .whom-card__img {
   width: 100%;
-  height: 120px;
+  height: 150px;
   overflow: hidden;
 }
 .whom-card__img img {
@@ -1007,8 +1007,64 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
   text-align: center;
+}
+
+.footer__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px 32px;
+}
+
+.footer__legal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  width: 100%;
+  max-width: 560px;
+}
+
+.footer__requisites {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+}
+
+.footer__contact-info {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.footer__contact-info a {
+  color: rgba(255,255,255,0.85);
+}
+
+.footer__sep {
+  margin: 0 8px;
+  opacity: 0.5;
+}
+
+.footer__docs {
+  display: flex;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.footer__docs a {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  text-decoration: underline;
+}
+
+.footer__docs a:hover {
+  color: #fff;
 }
 
 .footer__brand {
@@ -1206,6 +1262,27 @@ ul {
   color: var(--c-text-secondary);
   margin-bottom: 24px;
   font-size: 0.95rem;
+}
+
+.modal--rules .modal__rules-content {
+  text-align: left;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--c-text-secondary);
+}
+
+.modal--rules .modal__rules-content ol {
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.modal--rules .modal__rules-content li {
+  margin-bottom: 10px;
+}
+
+.modal--rules .modal__rules-content a {
+  color: var(--c-primary);
 }
 
 /* ============================================

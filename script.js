@@ -124,7 +124,22 @@ modalOverlay.addEventListener('click', function (e) {
 });
 
 document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') closeModal();
+  if (e.key === 'Escape') {
+    if (document.getElementById('rulesModalOverlay').classList.contains('active')) closeRulesModal();
+    else if (modalOverlay.classList.contains('active')) closeModal();
+  }
+});
+
+function openRulesModal() {
+  document.getElementById('rulesModalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeRulesModal() {
+  document.getElementById('rulesModalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('rulesModalOverlay').addEventListener('click', function (e) {
+  if (e.target === this) closeRulesModal();
 });
 
 /* ============================================
