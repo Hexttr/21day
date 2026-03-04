@@ -23,15 +23,12 @@
      ============================================ -->
 <header class="header" id="header">
   <div class="container header__inner">
-    <a href="#" class="header__logo">
-      <span class="logo-21">21</span><span class="logo-day">day</span>
-      <span class="logo-suffix"> с ИИ</span>
-    </a>
+    <a href="#" class="header__logo">21DAY</a>
     <nav class="header__nav" id="nav">
-      <a href="#program" class="header__link">Программа</a>
-      <a href="#results" class="header__link">Результаты</a>
-      <a href="#tools" class="header__link">Инструменты</a>
-      <a href="#pricing" class="header__link">Стоимость</a>
+      <a href="#program" class="header__link">ПРОГРАММА</a>
+      <a href="#results" class="header__link">РЕЗУЛЬТАТЫ</a>
+      <a href="#tools" class="header__link">ИНСТРУМЕНТЫ</a>
+      <a href="#pricing" class="header__link">СТОИМОСТЬ</a>
       <a href="#faq" class="header__link">FAQ</a>
     </nav>
     <button class="header__cta btn btn--sm" onclick="openModal()">Записаться</button>
@@ -44,8 +41,8 @@
 <!-- ============================================
      HERO — ATTENTION (AIDA)
      ============================================ -->
-<section class="hero" role="banner">
-  <div class="hero__bg" aria-hidden="true"></div>
+<section class="hero" role="banner" id="heroSection">
+  <div class="hero__bg" aria-hidden="true" id="heroBg"></div>
   <div class="container hero__inner">
     <div class="hero__badge">Старт нового потока — скоро</div>
     <h1 class="hero__title">
@@ -94,27 +91,27 @@
     <div class="problems__grid">
       <div class="problem-card">
         <div class="problem-card__img"><img src="images/problem-time.webp" alt="" loading="lazy"></div>
-        <p>Тратите часы на написание постов, писем и&nbsp;контента вместо работы с&nbsp;клиентами</p>
+        <div class="problem-card__text"><p>Тратите часы на написание постов, писем и&nbsp;контента вместо работы с&nbsp;клиентами</p></div>
       </div>
       <div class="problem-card">
         <div class="problem-card__img"><img src="images/problem-start.webp" alt="" loading="lazy"></div>
-        <p>Слышите про ChatGPT и&nbsp;нейросети, но&nbsp;не&nbsp;понимаете, с&nbsp;чего начать</p>
+        <div class="problem-card__text"><p>Слышите про ChatGPT и&nbsp;нейросети, но&nbsp;не&nbsp;понимаете, с&nbsp;чего начать</p></div>
       </div>
       <div class="problem-card">
         <div class="problem-card__img"><img src="images/problem-competition.webp" alt="" loading="lazy"></div>
-        <p>Конкуренты уже используют ИИ, а&nbsp;вы&nbsp;отстаёте и&nbsp;теряете клиентов</p>
+        <div class="problem-card__text"><p>Конкуренты уже используют ИИ, а&nbsp;вы&nbsp;отстаёте и&nbsp;теряете клиентов</p></div>
       </div>
       <div class="problem-card">
         <div class="problem-card__img"><img src="images/problem-routine.webp" alt="" loading="lazy"></div>
-        <p>Рутина съедает время: запись, напоминания, отчёты, рассылки</p>
+        <div class="problem-card__text"><p>Рутина съедает время: запись, напоминания, отчёты, рассылки</p></div>
       </div>
       <div class="problem-card">
         <div class="problem-card__img"><img src="images/problem-disappointing.webp" alt="" loading="lazy"></div>
-        <p>Пробовали ИИ, но&nbsp;результаты разочаровали — ответы были поверхностными</p>
+        <div class="problem-card__text"><p>Пробовали ИИ, но&nbsp;результаты разочаровали — ответы были поверхностными</p></div>
       </div>
       <div class="problem-card">
         <div class="problem-card__img"><img src="images/problem-scale.webp" alt="" loading="lazy"></div>
-        <p>Хотите масштабировать практику, но&nbsp;не&nbsp;хватает рук и&nbsp;времени</p>
+        <div class="problem-card__text"><p>Хотите масштабировать практику, но&nbsp;не&nbsp;хватает рук и&nbsp;времени</p></div>
       </div>
     </div>
   </div>
@@ -162,9 +159,12 @@
     <!-- Неделя 1 -->
     <div class="week">
       <div class="week__header week__header--1">
+        <div class="week__icon"><img src="images/week-1.webp" alt="" loading="lazy"></div>
+        <div class="week__content">
         <span class="week__number">Неделя 1</span>
         <h3 class="week__title">Основы ИИ и базовые инструменты</h3>
         <p class="week__goal">Цель: познакомиться с ИИ, научиться работать с текстовыми моделями</p>
+        </div>
       </div>
       <div class="week__days">
         <div class="day-card">
@@ -208,9 +208,12 @@
     <!-- Неделя 2 -->
     <div class="week">
       <div class="week__header week__header--2">
+        <div class="week__icon"><img src="images/week-2.webp" alt="" loading="lazy"></div>
+        <div class="week__content">
         <span class="week__number">Неделя 2</span>
         <h3 class="week__title">Продвинутые инструменты и автоматизация</h3>
         <p class="week__goal">Цель: освоить специализированные инструменты и автоматизацию рутины</p>
+        </div>
       </div>
       <div class="week__days">
         <div class="day-card">
@@ -254,9 +257,12 @@
     <!-- Неделя 3 -->
     <div class="week">
       <div class="week__header week__header--3">
+        <div class="week__icon"><img src="images/week-3.webp" alt="" loading="lazy"></div>
+        <div class="week__content">
         <span class="week__number">Неделя 3</span>
         <h3 class="week__title">Продвинутая автоматизация и специализация</h3>
         <p class="week__goal">Цель: создать полноценную экосистему ИИ-инструментов для практики</p>
+        </div>
       </div>
       <div class="week__days">
         <div class="day-card">
@@ -484,22 +490,22 @@
     <h2 class="section-title">Бонусы для каждого участника</h2>
     <div class="bonuses__grid">
       <div class="bonus-card">
-        <div class="bonus-card__icon">📚</div>
+        <div class="bonus-card__img"><img src="images/bonus-library.webp" alt="" loading="lazy"></div>
         <h3>Библиотека промптов</h3>
         <p>70+ готовых промптов для психологов, тарологов, нумерологов и универсальных задач</p>
       </div>
       <div class="bonus-card">
-        <div class="bonus-card__icon">🔗</div>
+        <div class="bonus-card__img"><img src="images/bonus-checklist.webp" alt="" loading="lazy"></div>
         <h3>Чек-лист инструментов</h3>
         <p>Полный список ИИ-инструментов с описаниями, ссылками и рекомендациями</p>
       </div>
       <div class="bonus-card">
-        <div class="bonus-card__icon">👥</div>
+        <div class="bonus-card__img"><img src="images/bonus-community.webp" alt="" loading="lazy"></div>
         <h3>Закрытое сообщество</h3>
         <p>Telegram-группа выпускников для обмена опытом, кейсами и поддержки</p>
       </div>
       <div class="bonus-card">
-        <div class="bonus-card__icon">♾️</div>
+        <div class="bonus-card__img"><img src="images/bonus-forever.webp" alt="" loading="lazy"></div>
         <h3>Доступ навсегда</h3>
         <p>Все записи уроков и материалы остаются у вас — пересматривайте в любое время</p>
       </div>
@@ -561,13 +567,10 @@
      ============================================ -->
 <footer class="footer">
   <div class="container footer__inner">
-    <div class="footer__brand">
-      <span class="logo-21">21</span><span class="logo-day">day</span>
-      <span class="logo-suffix"> с ИИ</span>
-    </div>
+    <div class="footer__brand">21DAY</div>
     <div class="footer__links">
-      <a href="#program">Программа</a>
-      <a href="#pricing">Стоимость</a>
+      <a href="#program">ПРОГРАММА</a>
+      <a href="#pricing">СТОИМОСТЬ</a>
       <a href="#faq">FAQ</a>
     </div>
     <!-- КОНТАКТЫ: обновите ссылки -->

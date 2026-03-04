@@ -201,34 +201,14 @@ ul {
 }
 
 .header__logo {
-  font-weight: 800;
-  font-size: 1.2rem;
-  color: var(--c-text);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Логотип 21day — кастомизация */
-.logo-21 {
   font-weight: 900;
-  font-size: 1.35rem;
-  letter-spacing: -0.03em;
-  background: var(--g-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.logo-day {
-  font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
   color: var(--c-text);
-  letter-spacing: 0.02em;
+  text-decoration: none;
 }
-.logo-suffix {
-  font-weight: 500;
-  font-size: 0.9rem;
-  color: var(--c-text-muted);
+.header__logo:hover {
+  color: var(--c-primary);
 }
 
 .header__nav {
@@ -239,7 +219,8 @@ ul {
 .header__link {
   color: var(--c-text-secondary);
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
   transition: color 0.2s;
 }
 
@@ -319,13 +300,13 @@ ul {
 /* Фоновое изображение hero — путь: images/hero.jpg */
 .hero__bg {
   position: absolute;
-  inset: 0;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
   background: url('images/hero.jpg') center center / cover no-repeat;
-  opacity: 0.35;
-  transition: opacity 0.4s ease;
-}
-.hero:hover .hero__bg {
-  opacity: 0.5;
+  opacity: 0.4;
+  transition: transform 0.1s ease-out;
+  will-change: transform;
 }
 
 .hero__inner {
@@ -425,12 +406,12 @@ ul {
 
 .problem-card {
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px;
+  align-items: stretch;
+  padding: 0;
   background: var(--c-bg);
   border-radius: var(--r-md);
   border: 1px solid var(--c-border);
+  overflow: hidden;
   transition: box-shadow 0.3s;
 }
 
@@ -440,20 +421,27 @@ ul {
 
 .problem-card__img {
   flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  border-radius: var(--r-md);
+  width: 100px;
+  min-height: 100%;
   overflow: hidden;
 }
 .problem-card__img img {
   width: 100%;
   height: 100%;
+  min-height: 100%;
   object-fit: cover;
 }
 
-.problem-card p {
+.problem-card__text {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+.problem-card__text p {
   color: var(--c-text-secondary);
   font-size: 0.95rem;
+  margin: 0;
 }
 
 /* ============================================
@@ -471,10 +459,11 @@ ul {
 
 .whom-card {
   text-align: center;
-  padding: 32px 24px;
+  padding: 0;
   background: var(--c-bg-alt);
   border-radius: var(--r-lg);
   box-shadow: var(--c-card-shadow);
+  overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -485,10 +474,7 @@ ul {
 
 .whom-card__img {
   width: 100%;
-  max-width: 140px;
-  height: 100px;
-  margin: 0 auto 16px;
-  border-radius: var(--r-md);
+  height: 120px;
   overflow: hidden;
 }
 .whom-card__img img {
@@ -501,11 +487,14 @@ ul {
   font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 8px;
+  padding: 20px 20px 0;
 }
 
 .whom-card p {
   color: var(--c-text-secondary);
   font-size: 0.9rem;
+  padding: 8px 20px 24px;
+  margin: 0;
 }
 
 /* ============================================
@@ -525,10 +514,31 @@ ul {
 }
 
 .week__header {
-  padding: 28px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 28px;
   border-radius: var(--r-lg);
   margin-bottom: 20px;
   color: #fff;
+}
+
+.week__icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255,255,255,0.2);
+}
+.week__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.week__content {
+  flex: 1;
 }
 
 .week__header--1 { background: linear-gradient(135deg, #6C3CE1, #A855F7); }
@@ -847,25 +857,41 @@ ul {
 
 .bonus-card {
   text-align: center;
-  padding: 28px 24px;
+  padding: 0;
   background: var(--c-bg-alt);
   border-radius: var(--r-lg);
   box-shadow: var(--c-card-shadow);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.bonus-card__icon {
-  font-size: 2rem;
-  margin-bottom: 12px;
+.bonus-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--c-card-shadow-hover);
+}
+
+.bonus-card__img {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+}
+.bonus-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .bonus-card h3 {
   font-weight: 700;
   margin-bottom: 8px;
+  padding: 20px 20px 0;
 }
 
 .bonus-card p {
   color: var(--c-text-secondary);
   font-size: 0.9rem;
+  padding: 8px 20px 24px;
+  margin: 0;
 }
 
 /* ============================================
@@ -975,17 +1001,10 @@ ul {
 }
 
 .footer__brand {
-  font-weight: 800;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.footer__brand .logo-day {
-  color: rgba(255, 255, 255, 0.95);
-}
-.footer__brand .logo-suffix {
-  color: rgba(255, 255, 255, 0.6);
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  color: #fff;
 }
 
 .footer__links {

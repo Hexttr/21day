@@ -33,8 +33,7 @@
      ---------------------------------------- */
   var revealTargets =
     '.problem-card, .whom-card, .day-card, .result-card, .tool-tag, ' +
-    '.method-card, .principle, .price-card, .bonus-card, .faq-item, ' +
-    '.week__header';
+    '.method-card, .price-card, .bonus-card, .faq-item, .week__header';
 
   document.querySelectorAll(revealTargets).forEach(function (el) {
     el.classList.add('reveal');
@@ -84,6 +83,31 @@
     });
   });
 
+  /* ----------------------------------------
+     Hero parallax: mouse + scroll
+     ---------------------------------------- */
+  var heroSection = document.getElementById('heroSection');
+  var heroBg = document.getElementById('heroBg');
+  if (heroSection && heroBg) {
+    heroSection.addEventListener('mousemove', function (e) {
+      var rect = heroSection.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      heroBg.style.transform = 'translate(' + (x * 15) + 'px, ' + (y * 15) + 'px)';
+    });
+    heroSection.addEventListener('mouseleave', function () {
+      heroBg.style.transform = 'translate(0, 0)';
+    });
+    window.addEventListener('scroll', function () {
+      var rect = heroSection.getBoundingClientRect();
+      var scrolled = -rect.top / (rect.height + 200);
+      if (scrolled > 0 && scrolled < 1) {
+        heroBg.style.transform = 'translateY(' + (scrolled * 30) + 'px)';
+      } else if (scrolled <= 0) {
+        heroBg.style.transform = 'translateY(0)';
+      }
+    });
+  }
 })();
 
 /* ============================================
