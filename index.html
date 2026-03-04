@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="21-дневный курс по ИИ для помогающих специалистов. От новичка до уверенного пользователя за 15 минут в день.">
+  <meta name="keywords" content="ИИ курс, искусственный интеллект, помогающие специалисты, психолог, таролог, нумеролог, ChatGPT, автоматизация">
+  <title>21 день с ИИ — Курс для помогающих специалистов</title>
+
+  <!-- Google Fonts: Inter (clean, modern) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Favicon (замените на свой) -->
+  <!-- <link rel="icon" href="favicon.ico"> -->
+</head>
+<body>
+
+<!-- ============================================
+     НАВИГАЦИЯ
+     ============================================ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#" class="header__logo">
+      <span class="logo-icon">✦</span> 21 день с ИИ
+    </a>
+    <nav class="header__nav" id="nav">
+      <a href="#program" class="header__link">Программа</a>
+      <a href="#results" class="header__link">Результаты</a>
+      <a href="#tools" class="header__link">Инструменты</a>
+      <a href="#pricing" class="header__link">Стоимость</a>
+      <a href="#faq" class="header__link">FAQ</a>
+    </nav>
+    <button class="header__cta btn btn--sm" onclick="openModal()">Записаться</button>
+    <button class="header__burger" id="burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============================================
+     HERO — ATTENTION (AIDA)
+     ============================================ -->
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__badge">Старт нового потока — скоро</div>
+    <h1 class="hero__title">
+      Освойте <span class="gradient-text">искусственный интеллект</span> за 21 день
+    </h1>
+    <p class="hero__subtitle">
+      Практический курс для психологов, тарологов, нумерологов и&nbsp;других помогающих специалистов. 
+      <strong>15 минут в день</strong> — и&nbsp;вы&nbsp;автоматизируете рутину, увеличите охваты и&nbsp;освободите время для&nbsp;клиентов.
+    </p>
+    <div class="hero__actions">
+      <button class="btn btn--primary btn--lg" onclick="openModal()">
+        Записаться на курс
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <a href="#program" class="btn btn--outline btn--lg">Смотреть программу</a>
+    </div>
+    <div class="hero__stats">
+      <div class="stat">
+        <span class="stat__number">15+</span>
+        <span class="stat__label">ИИ-инструментов</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number">21</span>
+        <span class="stat__label">день практики</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number">15</span>
+        <span class="stat__label">минут в день</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number">70+</span>
+        <span class="stat__label">готовых промптов</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero__bg-glow"></div>
+</section>
+
+<!-- ============================================
+     ПРОБЛЕМЫ ЦА — INTEREST (AIDA)
+     ============================================ -->
+<section class="problems" id="problems">
+  <div class="container">
+    <h2 class="section-title">Знакомо?</h2>
+    <p class="section-subtitle">Эти проблемы решает наш курс</p>
+    <div class="problems__grid">
+      <div class="problem-card">
+        <div class="problem-card__icon">⏰</div>
+        <p>Тратите часы на написание постов, писем и&nbsp;контента вместо работы с&nbsp;клиентами</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card__icon">😰</div>
+        <p>Слышите про ChatGPT и&nbsp;нейросети, но&nbsp;не&nbsp;понимаете, с&nbsp;чего начать</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card__icon">📉</div>
+        <p>Конкуренты уже используют ИИ, а&nbsp;вы&nbsp;отстаёте и&nbsp;теряете клиентов</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card__icon">🔄</div>
+        <p>Рутина съедает время: запись, напоминания, отчёты, рассылки</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card__icon">🤷</div>
+        <p>Пробовали ИИ, но&nbsp;результаты разочаровали — ответы были поверхностными</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card__icon">💸</div>
+        <p>Хотите масштабировать практику, но&nbsp;не&nbsp;хватает рук и&nbsp;времени</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     ДЛЯ КОГО — INTEREST (AIDA)
+     ============================================ -->
+<section class="for-whom">
+  <div class="container">
+    <h2 class="section-title">Для кого этот курс</h2>
+    <div class="for-whom__grid">
+      <div class="whom-card">
+        <div class="whom-card__icon">🧠</div>
+        <h3>Психологи</h3>
+        <p>Автоматизируйте документацию сессий, создавайте психообразовательные материалы и&nbsp;планы терапии</p>
+      </div>
+      <div class="whom-card">
+        <div class="whom-card__icon">🔮</div>
+        <h3>Тарологи</h3>
+        <p>Генерируйте персонализированные отчёты, интерпретации раскладов и&nbsp;контент о&nbsp;Таро</p>
+      </div>
+      <div class="whom-card">
+        <div class="whom-card__icon">🔢</div>
+        <h3>Нумерологи</h3>
+        <p>Автоматизируйте расчёты, создавайте персональные отчёты и&nbsp;прогнозы для&nbsp;клиентов</p>
+      </div>
+      <div class="whom-card">
+        <div class="whom-card__icon">🤝</div>
+        <h3>Коучи и консультанты</h3>
+        <p>Оптимизируйте воронку продаж, контент-маркетинг и&nbsp;коммуникацию с&nbsp;клиентами</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     ПРОГРАММА КУРСА — INTEREST/DESIRE (AIDA)
+     ============================================ -->
+<section class="program" id="program">
+  <div class="container">
+    <h2 class="section-title">Программа курса</h2>
+    <p class="section-subtitle">3 недели — от основ до полноценной ИИ-экосистемы</p>
+
+    <!-- Неделя 1 -->
+    <div class="week">
+      <div class="week__header week__header--1">
+        <span class="week__number">Неделя 1</span>
+        <h3 class="week__title">Основы ИИ и базовые инструменты</h3>
+        <p class="week__goal">Цель: познакомиться с ИИ, научиться работать с текстовыми моделями</p>
+      </div>
+      <div class="week__days">
+        <div class="day-card">
+          <span class="day-card__num">День 1</span>
+          <h4>Введение в ИИ для вашей практики</h4>
+          <p>Как работают нейросети, регистрация в ChatGPT, Claude и Gemini, этика использования</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 2</span>
+          <h4>Основы промпт-инженеринга</h4>
+          <p>Структура эффективного промпта, техники Zero-shot, Few-shot и Chain-of-thought</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 3</span>
+          <h4>ИИ для работы с клиентскими текстами</h4>
+          <p>Анализ запросов, автоматизация FAQ, шаблоны ответов, персонализация</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 4</span>
+          <h4>ИИ для контента и маркетинга</h4>
+          <p>Контент-стратегия, генерация идей, контент-план на месяц, адаптация под платформы</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 5</span>
+          <h4>Визуальный контент и презентации</h4>
+          <p>Midjourney, генерация изображений, Gamma AI для презентаций за 2 минуты</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 6</span>
+          <h4>ИИ для исследований и аналитики</h4>
+          <p>Perplexity AI, анализ конкурентов, поиск трендов, сбор данных о ЦА</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 7</span>
+          <h4>Считаем новый проект с ИИ</h4>
+          <p>Генерация бизнес-идей, валидация, unit-экономика, питч-дек за 30 минут</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Неделя 2 -->
+    <div class="week">
+      <div class="week__header week__header--2">
+        <span class="week__number">Неделя 2</span>
+        <h3 class="week__title">Продвинутые инструменты и автоматизация</h3>
+        <p class="week__goal">Цель: освоить специализированные инструменты и автоматизацию рутины</p>
+      </div>
+      <div class="week__days">
+        <div class="day-card">
+          <span class="day-card__num">День 8</span>
+          <h4>ИИ для работы с клиентами</h4>
+          <p>Автоматизация записи, чат-боты в Telegram, автоответчики, follow-up</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 9</span>
+          <h4>Видео-контент с ИИ</h4>
+          <p>Invideo AI, HeyGen, создание Reels/Shorts, автоматические субтитры</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 10</span>
+          <h4>Озвучка и аудио-контент</h4>
+          <p>ElevenLabs, Yandex SpeechKit, аудио-медитации, клонирование голоса</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 11</span>
+          <h4>Email-маркетинг с ИИ</h4>
+          <p>Сегментация, welcome-письма, триггерные рассылки, персонализация</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 12</span>
+          <h4>Автоматизация соцсетей</h4>
+          <p>SMMplanner, автопостинг в VK/Telegram, планирование публикаций</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 13</span>
+          <h4>Perplexity AI и база знаний</h4>
+          <p>RAG-технологии, персональная база знаний, чат-бот на ваших материалах</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 14</span>
+          <h4>Практикум: полная воронка</h4>
+          <p>Мини-проект: лид-магнит + email-серия + лендинг + автопостинг + запись</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Неделя 3 -->
+    <div class="week">
+      <div class="week__header week__header--3">
+        <span class="week__number">Неделя 3</span>
+        <h3 class="week__title">Продвинутая автоматизация и специализация</h3>
+        <p class="week__goal">Цель: создать полноценную экосистему ИИ-инструментов для практики</p>
+      </div>
+      <div class="week__days">
+        <div class="day-card">
+          <span class="day-card__num">День 15</span>
+          <h4>No-code автоматизация: n8n</h4>
+          <p>Автоматизация без кода, интеграция сервисов, ChatGPT Actions</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 16</span>
+          <h4>ИИ-аналитика и дашборды</h4>
+          <p>Яндекс DataLens, Google Looker Studio, KPI, автоматические отчёты</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 17</span>
+          <h4>Персональный ИИ-ассистент</h4>
+          <p>Создание собственного GPT, обучение на ваших материалах, интеграция</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 18</span>
+          <h4>ИИ для личного бренда</h4>
+          <p>Аутентичность, tone of voice, стратегия продвижения на 3 месяца</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 19</span>
+          <h4>Специализация под вашу нишу</h4>
+          <p>Индивидуальные инструменты для психологов, тарологов, нумерологов</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 20</span>
+          <h4>Этика и безопасность ИИ</h4>
+          <p>Конфиденциальность, ограничения, информирование клиентов, ответственность</p>
+        </div>
+        <div class="day-card">
+          <span class="day-card__num">День 21</span>
+          <h4>Финальный проект</h4>
+          <p>Полноценная система: воронка + коммуникация + автоматизация + аналитика + ИИ-ассистент</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     РЕЗУЛЬТАТЫ — DESIRE (AIDA)
+     ============================================ -->
+<section class="results" id="results">
+  <div class="container">
+    <h2 class="section-title">Что вы получите</h2>
+    <p class="section-subtitle">Конкретные результаты после прохождения курса</p>
+    <div class="results__grid">
+      <div class="result-card">
+        <div class="result-card__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>10+ часов в неделю</h3>
+        <p>Экономия времени на рутинных задачах благодаря автоматизации</p>
+      </div>
+      <div class="result-card">
+        <div class="result-card__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0v10l7 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>15+ ИИ-инструментов</h3>
+        <p>Освоите весь арсенал: от ChatGPT до автоматизации и аналитики</p>
+      </div>
+      <div class="result-card">
+        <div class="result-card__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2m7-10a4 4 0 100-8 4 4 0 000 8zm11 2v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Рост аудитории</h3>
+        <p>Контент-план, автопостинг, визуалы — всё для увеличения охватов</p>
+      </div>
+      <div class="result-card">
+        <div class="result-card__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a10 10 0 11-20 0 10 10 0 0120 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Рабочая система</h3>
+        <p>Полноценная экосистема: воронка, рассылки, боты, аналитика, ИИ-ассистент</p>
+      </div>
+      <div class="result-card">
+        <div class="result-card__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>70+ готовых промптов</h3>
+        <p>Библиотека промптов для вашей ниши: психология, таро, нумерология</p>
+      </div>
+      <div class="result-card">
+        <div class="result-card__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Сообщество и поддержка</h3>
+        <p>Закрытый Telegram-чат, проверка заданий кураторами, доступ навсегда</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     ИНСТРУМЕНТЫ — DESIRE (AIDA)
+     ============================================ -->
+<section class="tools" id="tools">
+  <div class="container">
+    <h2 class="section-title">Инструменты, которые вы освоите</h2>
+    <p class="section-subtitle">Полный стек ИИ-инструментов для помогающего специалиста</p>
+    <div class="tools__grid">
+      <div class="tool-tag">ChatGPT</div>
+      <div class="tool-tag">Claude</div>
+      <div class="tool-tag">Gemini</div>
+      <div class="tool-tag">Perplexity AI</div>
+      <div class="tool-tag">Midjourney</div>
+      <div class="tool-tag">Gamma AI</div>
+      <div class="tool-tag">Invideo AI</div>
+      <div class="tool-tag">HeyGen</div>
+      <div class="tool-tag">ElevenLabs</div>
+      <div class="tool-tag">Yandex SpeechKit</div>
+      <div class="tool-tag">n8n</div>
+      <div class="tool-tag">SMMplanner</div>
+      <div class="tool-tag">Яндекс DataLens</div>
+      <div class="tool-tag">Google Looker Studio</div>
+      <div class="tool-tag">Unisender</div>
+      <div class="tool-tag">Telegram-боты</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     МЕТОДИКА — DESIRE (AIDA)
+     ============================================ -->
+<section class="method">
+  <div class="container">
+    <h2 class="section-title">Как проходит обучение</h2>
+    <div class="method__grid">
+      <div class="method-card">
+        <div class="method-card__step">1</div>
+        <h3>Смотрите видео</h3>
+        <p>Короткий урок 15 минут — без воды, только практика и конкретные инструкции</p>
+      </div>
+      <div class="method-card">
+        <div class="method-card__step">2</div>
+        <h3>Выполняете задание</h3>
+        <p>Каждый день — практическое задание, которое сразу применяете в своей работе</p>
+      </div>
+      <div class="method-card">
+        <div class="method-card__step">3</div>
+        <h3>Получаете обратную связь</h3>
+        <p>Кураторы проверяют задания, а в чате можно задать любой вопрос</p>
+      </div>
+      <div class="method-card">
+        <div class="method-card__step">4</div>
+        <h3>Внедряете в практику</h3>
+        <p>К концу курса у вас готовая система ИИ-инструментов для вашей ниши</p>
+      </div>
+    </div>
+    <div class="method__principles">
+      <div class="principle">
+        <span class="principle__icon">🎯</span>
+        <span>Практичность — каждый инструмент сразу к делу</span>
+      </div>
+      <div class="principle">
+        <span class="principle__icon">🚫</span>
+        <span>Без программирования — всё no-code</span>
+      </div>
+      <div class="principle">
+        <span class="principle__icon">📈</span>
+        <span>От простого к сложному — постепенный рост</span>
+      </div>
+      <div class="principle">
+        <span class="principle__icon">🕐</span>
+        <span>15 минут в день — каждый найдёт время</span>
+      </div>
+      <div class="principle">
+        <span class="principle__icon">🤖</span>
+        <span>Специализация под вашу нишу</span>
+      </div>
+      <div class="principle">
+        <span class="principle__icon">💚</span>
+        <span>Этичный подход — ИИ помогает, не заменяет</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     ТАРИФЫ — ACTION (AIDA)
+     ============================================ -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <h2 class="section-title">Выберите свой тариф</h2>
+    <p class="section-subtitle">Начните трансформацию своей практики уже сегодня</p>
+    <div class="pricing__grid">
+
+      <!-- Тариф 14 дней -->
+      <div class="price-card">
+        <div class="price-card__header">
+          <h3 class="price-card__name">Базовый</h3>
+          <p class="price-card__duration">14 дней</p>
+        </div>
+        <div class="price-card__price">
+          <!-- ЦЕНА: измените здесь -->
+          <span class="price-card__amount">6 500</span>
+          <span class="price-card__currency">₽</span>
+        </div>
+        <ul class="price-card__features">
+          <li>Неделя 1: Основы ИИ</li>
+          <li>Неделя 2: Продвинутые инструменты</li>
+          <li>Видеоуроки (15 мин/день)</li>
+          <li>Практические задания</li>
+          <li>Чат-сообщество</li>
+          <li>Библиотека промптов (40+)</li>
+          <li>Доступ к записям навсегда</li>
+        </ul>
+        <button class="btn btn--outline btn--lg btn--full" onclick="openModal('14 дней — 6 500 ₽')">
+          Выбрать тариф
+        </button>
+      </div>
+
+      <!-- Тариф 21 день -->
+      <div class="price-card price-card--popular">
+        <div class="price-card__badge">Полный курс</div>
+        <div class="price-card__header">
+          <h3 class="price-card__name">Продвинутый</h3>
+          <p class="price-card__duration">21 день</p>
+        </div>
+        <div class="price-card__price">
+          <!-- ЦЕНА: измените здесь -->
+          <span class="price-card__amount">8 500</span>
+          <span class="price-card__currency">₽</span>
+        </div>
+        <ul class="price-card__features">
+          <li><strong>Всё из тарифа «Базовый» +</strong></li>
+          <li>Неделя 3: Продвинутая автоматизация</li>
+          <li>No-code автоматизация (n8n)</li>
+          <li>Персональный ИИ-ассистент</li>
+          <li>Специализация под вашу нишу</li>
+          <li>Полная библиотека промптов (70+)</li>
+          <li>Финальный проект с обратной связью</li>
+          <li>Консультация по внедрению ИИ</li>
+        </ul>
+        <button class="btn btn--primary btn--lg btn--full" onclick="openModal('21 день — 8 500 ₽')">
+          Выбрать тариф
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     БОНУСЫ
+     ============================================ -->
+<section class="bonuses">
+  <div class="container">
+    <h2 class="section-title">Бонусы для каждого участника</h2>
+    <div class="bonuses__grid">
+      <div class="bonus-card">
+        <div class="bonus-card__icon">📚</div>
+        <h3>Библиотека промптов</h3>
+        <p>70+ готовых промптов для психологов, тарологов, нумерологов и универсальных задач</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-card__icon">🔗</div>
+        <h3>Чек-лист инструментов</h3>
+        <p>Полный список ИИ-инструментов с описаниями, ссылками и рекомендациями</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-card__icon">👥</div>
+        <h3>Закрытое сообщество</h3>
+        <p>Telegram-группа выпускников для обмена опытом, кейсами и поддержки</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-card__icon">♾️</div>
+        <h3>Доступ навсегда</h3>
+        <p>Все записи уроков и материалы остаются у вас — пересматривайте в любое время</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FAQ — DESIRE/ACTION (AIDA)
+     ============================================ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <h2 class="section-title">Частые вопросы</h2>
+    <div class="faq__list">
+      <details class="faq-item">
+        <summary class="faq-item__question">Нужны ли технические навыки для прохождения курса?</summary>
+        <p class="faq-item__answer">Нет! Курс создан специально для людей без технического бэкграунда. Все инструменты — no-code, мы всё показываем пошагово. Если вы умеете пользоваться браузером и мессенджерами — вы справитесь.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-item__question">Сколько времени нужно уделять в день?</summary>
+        <p class="faq-item__answer">15 минут на просмотр видеоурока + 30-60 минут на практическое задание. Итого около 1 часа в день. Все задания сразу применимы к вашей реальной практике.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-item__question">Чем отличаются тарифы на 14 и 21 день?</summary>
+        <p class="faq-item__answer">Тариф на 14 дней включает первые две недели: основы ИИ и продвинутые инструменты. Тариф на 21 день добавляет третью неделю с no-code автоматизацией, созданием персонального ИИ-ассистента, специализацией под вашу нишу и финальным проектом.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-item__question">Нужно ли платить за ИИ-инструменты?</summary>
+        <p class="faq-item__answer">Большинство инструментов в курсе бесплатны или имеют бесплатные тарифы, достаточные для обучения. Мы подбираем доступные российские аналоги где это возможно.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-item__question">Что если я не успею пройти курс за 21 день?</summary>
+        <p class="faq-item__answer">Доступ к записям уроков и материалам остаётся у вас навсегда. Вы можете проходить курс в своём темпе. Чат-сообщество также продолжает работать после окончания курса.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-item__question">Безопасно ли использовать ИИ в работе с клиентами?</summary>
+        <p class="faq-item__answer">Этому посвящён отдельный урок (День 20). Мы учим этичному использованию ИИ: защита данных клиентов, информирование об использовании ИИ, понимание ограничений. ИИ — это инструмент, который помогает специалисту, а не заменяет его.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     ФИНАЛЬНЫЙ CTA — ACTION (AIDA)
+     ============================================ -->
+<section class="final-cta">
+  <div class="container final-cta__inner">
+    <h2>Готовы трансформировать свою практику с&nbsp;помощью&nbsp;ИИ?</h2>
+    <p>Присоединяйтесь к курсу и за 21 день постройте полноценную систему ИИ-инструментов для вашей работы</p>
+    <button class="btn btn--primary btn--lg" onclick="openModal()">
+      Записаться на курс
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- ============================================
+     ФУТЕР
+     ============================================ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="logo-icon">✦</span> 21 день с ИИ
+    </div>
+    <div class="footer__links">
+      <a href="#program">Программа</a>
+      <a href="#pricing">Стоимость</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <!-- КОНТАКТЫ: обновите ссылки -->
+    <div class="footer__contacts">
+      <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+      <!-- <a href="mailto:info@example.com">Email</a> -->
+    </div>
+    <p class="footer__copy">&copy; 2026 «21 день с ИИ». Все права защищены.</p>
+  </div>
+</footer>
+
+<!-- ============================================
+     МОДАЛЬНОЕ ОКНО ЗАПИСИ
+     ============================================ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal__close" onclick="closeModal()" aria-label="Закрыть">&times;</button>
+    <h2 id="modalTitle" class="modal__title">Запись на курс</h2>
+    <p class="modal__selected-plan" id="selectedPlan"></p>
+
+    <form class="modal__form" id="enrollForm" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label for="userName">Ваше имя</label>
+        <input type="text" id="userName" name="name" required placeholder="Анна">
+      </div>
+      <div class="form-group">
+        <label for="userEmail">Email</label>
+        <input type="email" id="userEmail" name="email" required placeholder="anna@example.com">
+      </div>
+      <div class="form-group">
+        <label for="userPhone">Телефон</label>
+        <input type="tel" id="userPhone" name="phone" required placeholder="+7 (999) 123-45-67">
+      </div>
+      <div class="form-group">
+        <label for="userPlan">Тариф</label>
+        <select id="userPlan" name="plan" required>
+          <option value="14">Базовый — 14 дней (6 500 ₽)</option>
+          <option value="21" selected>Продвинутый — 21 день (8 500 ₽)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="userSpecialty">Ваша специализация</label>
+        <select id="userSpecialty" name="specialty">
+          <option value="">Выберите...</option>
+          <option value="psychologist">Психолог</option>
+          <option value="tarologist">Таролог</option>
+          <option value="numerologist">Нумеролог</option>
+          <option value="coach">Коуч / Консультант</option>
+          <option value="other">Другое</option>
+        </select>
+      </div>
+
+      <!-- ROBOKASSA: кнопка оплаты будет подключена позже -->
+      <button type="submit" class="btn btn--primary btn--lg btn--full">
+        Записаться и оплатить
+      </button>
+      <p class="modal__note">После записи вы получите письмо с инструкциями. Оплата через Робокассу будет подключена в ближайшее время.</p>
+    </form>
+
+    <!-- Экран успеха -->
+    <div class="modal__success" id="modalSuccess" style="display: none;">
+      <div class="modal__success-icon">✓</div>
+      <h3>Заявка отправлена!</h3>
+      <p>Мы свяжемся с вами в ближайшее время для подтверждения записи и оплаты.</p>
+      <button class="btn btn--outline btn--lg" onclick="closeModal()">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
