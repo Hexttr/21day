@@ -1035,6 +1035,19 @@ ul {
   font-size: 0.8rem;
   color: rgba(255,255,255,0.6);
   line-height: 1.5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.2em;
+}
+
+.footer__req-item {
+  white-space: nowrap;
+}
+
+.footer__req-item:not(:last-child)::after {
+  content: " · ";
+  margin-left: 0.6em;
+  opacity: 0.8;
 }
 
 .footer__contact-info {
