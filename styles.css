@@ -60,7 +60,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: var(--c-text);
-  background: var(--c-bg);
+  background: #fdf2ff;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
