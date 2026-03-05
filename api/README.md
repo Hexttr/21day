@@ -21,6 +21,24 @@ API будет на http://127.0.0.1:5001
 4. **Алгоритм хэша:** MD5
 5. **Тестовые пароли** — уже прописаны в настройках магазина
 
+## Email после оплаты
+
+Чтобы пользователю приходило письмо после успешной оплаты, добавьте SMTP-переменные в systemd:
+
+```bash
+SMTP_HOST=smtp.yandex.ru  # или smtp.gmail.com, smtp.mail.ru
+SMTP_PORT=587
+SMTP_USER=info@i-integrator.com
+SMTP_PASS=пароль_приложения
+EMAIL_FROM=info@i-integrator.com
+EMAIL_FROM_NAME=21 день с ИИ
+```
+
+**Примеры SMTP:**
+- **Yandex:** smtp.yandex.ru:587, нужен пароль приложения
+- **Gmail:** smtp.gmail.com:587, нужен пароль приложения (2FA)
+- **Mail.ru:** smtp.mail.ru:587
+
 ## Переход в боевой режим
 
 Когда магазин активирован:

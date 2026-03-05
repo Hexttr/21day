@@ -186,22 +186,4 @@ function handleSubmit(e) {
     });
 }
 
-/* ============================================
-   Phone input mask (basic)
-   ============================================ */
-(function () {
-  var phoneInput = document.getElementById('userPhone');
-  phoneInput.addEventListener('input', function (e) {
-    var x = e.target.value.replace(/\D/g, '');
-    if (x.length === 0) {
-      e.target.value = '';
-      return;
-    }
-    var formatted = '+7';
-    if (x.length > 1) formatted += ' (' + x.substring(1, 4);
-    if (x.length >= 4) formatted += ') ' + x.substring(4, 7);
-    if (x.length >= 7) formatted += '-' + x.substring(7, 9);
-    if (x.length >= 9) formatted += '-' + x.substring(9, 11);
-    e.target.value = formatted;
-  });
-})();
+/* Phone: без маски — любой формат (+7, +1, +44 и т.д.) */

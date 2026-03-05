@@ -38,3 +38,4 @@ update_robokassa_prod.py
 update_telegram.py
 switch_to_promo_only.py
 fix_ssl.py
+add_email_smtp.py

@@ -6,9 +6,12 @@ Robokassa API для лендинга promo.21day.club.
 import hashlib
 import json
 import os
+import smtplib
 import time
 import urllib.error
 import urllib.request
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from urllib.parse import urlencode
 
 from flask import Flask, request, jsonify
@@ -22,6 +25,14 @@ BASE_URL = os.environ.get("BASE_URL", "https://promo.21day.club")
 IS_TEST = os.environ.get("ROBOKASSA_TEST", "1") == "1"
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_IDS = [x.strip() for x in os.environ.get("TELEGRAM_CHAT_IDS", "").split(",") if x.strip()]
+
+# Email после оплаты (SMTP)
+SMTP_HOST = os.environ.get("SMTP_HOST", "")
+SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
+SMTP_USER = os.environ.get("SMTP_USER", "")
+SMTP_PASS = os.environ.get("SMTP_PASS", "")
+EMAIL_FROM = os.environ.get("EMAIL_FROM", "info@i-integrator.com")
+EMAIL_FROM_NAME = os.environ.get("EMAIL_FROM_NAME", "21 день с ИИ")
 
 PRICES = {"14": 6500, "21": 8500}
 ROBOKASSA_URL = "https://auth.robokassa.ru/Merchant/Index.aspx"
@@ -52,7 +63,7 @@ def create_payment():
     # Shp_ в алфавитном порядке для подписи: email, name, phone, plan
     shp_email = (email or "")[:50]
     shp_name = (name or "")[:50]
-    shp_phone = (phone or "")[:20]
+    shp_phone = (phone or "")[:30]
     sign_str = f"{MERCHANT_LOGIN}:{out_sum}:{inv_id}:{PASSWORD1}:Shp_email={shp_email}:Shp_name={shp_name}:Shp_phone={shp_phone}:Shp_plan={plan}"
     signature = md5_signature(sign_str)
 
@@ -126,7 +137,40 @@ def robokassa_result():
         )
         _send_telegram(text)
 
+    # Письмо пользователю после оплаты
+    if shp_email and SMTP_HOST and SMTP_USER and SMTP_PASS:
+        _send_welcome_email(shp_email, shp_name or "Участник")
+
     return f"OK{inv_id}", 200
+
+
+def _send_welcome_email(to_email: str, name: str) -> None:
+    """Отправляет письмо пользователю после успешной оплаты."""
+    subject = "Вы записались на курс «21 день с ИИ»"
+    body = f"""Здравствуйте, {name}!
+
+Вы успешно записались на курс «21 день с ИИ». Оплата получена.
+
+В ближайшее время с вами свяжется менеджер для уточнения деталей и предоставления доступа к материалам.
+
+Если у вас есть вопросы — пишите на info@i-integrator.com или в Telegram.
+
+До встречи на курсе!
+Команда 21 день с ИИ
+"""
+    try:
+        msg = MIMEMultipart("alternative")
+        msg["Subject"] = subject
+        msg["From"] = f"{EMAIL_FROM_NAME} <{EMAIL_FROM}>"
+        msg["To"] = to_email
+        msg.attach(MIMEText(body, "plain", "utf-8"))
+
+        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
+            server.starttls()
+            server.login(SMTP_USER, SMTP_PASS)
+            server.sendmail(EMAIL_FROM, to_email, msg.as_string())
+    except Exception as e:
+        app.logger.warning(f"Email send failed to {to_email}: {e}")
 
 
 def _send_telegram(text: str) -> None:
