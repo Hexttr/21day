@@ -143,19 +143,7 @@ document.getElementById('rulesModalOverlay').addEventListener('click', function 
 });
 
 /* ============================================
-   Form submission
-   
-   ROBOKASSA: Замените содержимое handleSubmit
-   на редирект к Робокассе при подключении оплаты.
-   Пример интеграции:
-   
-   function handleSubmit(e) {
-     e.preventDefault();
-     var formData = new FormData(modalForm);
-     // 1. Отправить данные на ваш бэкенд
-     // 2. Бэкенд создает заказ и возвращает URL Робокассы
-     // 3. Редирект: window.location.href = robokassaUrl;
-   }
+   Form submission — Robokassa
    ============================================ */
 function handleSubmit(e) {
   e.preventDefault();
@@ -166,28 +154,36 @@ function handleSubmit(e) {
     phone: document.getElementById('userPhone').value,
     plan: userPlanSelect.value,
     specialty: document.getElementById('userSpecialty').value,
-    timestamp: new Date().toISOString()
+    origin: window.location.origin
   };
 
-  console.log('Заявка:', data);
+  var btn = modalForm.querySelector('button[type="submit"]');
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Переход к оплате...';
+  }
 
-  /* 
-     TODO: Отправка данных на сервер
-     
-     fetch('/api/enroll', {
-       method: 'POST',
-       headers: { 'Content-Type': 'application/json' },
-       body: JSON.stringify(data)
-     })
-     .then(res => res.json())
-     .then(result => {
-       // Редирект на оплату Робокасса
-       // window.location.href = result.paymentUrl;
-     });
-  */
-
-  modalForm.style.display = 'none';
-  modalSuccess.style.display = '';
+  fetch('/api/create-payment', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+    .then(function (res) { return res.json(); })
+    .then(function (result) {
+      if (result.paymentUrl) {
+        window.location.href = result.paymentUrl;
+      } else {
+        throw new Error(result.error || 'Ошибка создания платежа');
+      }
+    })
+    .catch(function (err) {
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Записаться и оплатить';
+      }
+      alert('Не удалось перейти к оплате. Попробуйте позже или свяжитесь с нами: info@i-integrator.com');
+      console.error(err);
+    });
 }
 
 /* ============================================

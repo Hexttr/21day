@@ -19,3 +19,22 @@ Desktop.ini
 
 # Node (на будущее)
 node_modules/
+
+# Deploy scripts (содержат credentials — не коммитить)
+deploy.py
+full_deploy.py
+enable_ssl.py
+fix_nginx_http.py
+explore_server.py
+setup_21day_club.py
+enable_promo_https.py
+add_promo_subdomain.py
+check_ssl.py
+
+# Robokassa / deploy (содержат credentials)
+api/config.env
+deploy_robokassa.py
+update_robokassa_prod.py
+update_telegram.py
+switch_to_promo_only.py
+fix_ssl.py
