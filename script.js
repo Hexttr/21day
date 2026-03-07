@@ -148,13 +148,15 @@ document.getElementById('rulesModalOverlay').addEventListener('click', function 
 function handleSubmit(e) {
   e.preventDefault();
 
+  var ref = (new URLSearchParams(window.location.search).get('ref') || '').trim();
   var data = {
     name: document.getElementById('userName').value,
     email: document.getElementById('userEmail').value,
     phone: document.getElementById('userPhone').value,
     plan: userPlanSelect.value,
     specialty: document.getElementById('userSpecialty').value,
-    origin: window.location.origin
+    origin: window.location.origin,
+    ref: ref
   };
 
   var btn = modalForm.querySelector('button[type="submit"]');
@@ -187,3 +189,65 @@ function handleSubmit(e) {
 }
 
 /* Phone: без маски — любой формат (+7, +1, +44 и т.д.) */
+
+/* ============================================
+   Динамическая загрузка контента из API
+   ============================================ */
+(function () {
+  fetch('/api/content.json')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data) return;
+      var esc = function (s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
+      if (data.problems) {
+        var p = data.problems;
+        var titles = document.querySelectorAll('#problems .section-title, #problems .section-subtitle');
+        if (titles[0]) titles[0].textContent = p.title || titles[0].textContent;
+        if (titles[1]) titles[1].textContent = p.subtitle || titles[1].textContent;
+        var cards = document.querySelectorAll('#problems .problem-card__text p');
+        (p.cards || []).forEach(function (c, i) { if (cards[i]) cards[i].innerHTML = (c.text || '').replace(/\n/g, '<br>'); });
+      }
+      if (data.whom) {
+        var w = data.whom;
+        var titles = document.querySelectorAll('.for-whom .section-title, .for-whom .section-subtitle');
+        if (titles[0]) titles[0].textContent = w.title || titles[0].textContent;
+        if (titles[1]) titles[1].textContent = w.subtitle || titles[1].textContent;
+        var whomCards = document.querySelectorAll('.for-whom .whom-card');
+        (w.cards || []).forEach(function (c, i) { if (whomCards[i]) { whomCards[i].querySelector('h3').textContent = c.title || ''; whomCards[i].querySelector('p').innerHTML = (c.text || '').replace(/\n/g, '<br>'); } });
+      }
+      if (data.results) {
+        var r = data.results;
+        var titles = document.querySelectorAll('#results .section-title, #results .section-subtitle');
+        if (titles[0]) titles[0].textContent = r.title || titles[0].textContent;
+        if (titles[1]) titles[1].textContent = r.subtitle || titles[1].textContent;
+        var resCards = document.querySelectorAll('#results .result-card');
+        (r.cards || []).forEach(function (c, i) { if (resCards[i]) { resCards[i].querySelector('h3').innerHTML = (c.title || '').replace(/\n/g, '<br>'); resCards[i].querySelector('p').innerHTML = (c.text || '').replace(/\n/g, '<br>'); } });
+      }
+      if (data.method) {
+        var m = data.method;
+        var titles = document.querySelectorAll('.method .section-title, .method .section-subtitle');
+        if (titles[0]) titles[0].textContent = m.title || titles[0].textContent;
+        if (titles[1]) titles[1].textContent = m.subtitle || titles[1].textContent;
+        var methodCards = document.querySelectorAll('.method .method-card');
+        (m.cards || []).forEach(function (c, i) { if (methodCards[i]) { methodCards[i].querySelector('h3').innerHTML = (c.title || '').replace(/\n/g, '<br>'); methodCards[i].querySelector('p').innerHTML = (c.text || '').replace(/\n/g, '<br>'); } });
+      }
+      if (data.bonuses) {
+        var b = data.bonuses;
+        var titles = document.querySelectorAll('.bonuses .section-title, .bonuses .section-subtitle');
+        if (titles[0]) titles[0].textContent = b.title || titles[0].textContent;
+        if (titles[1]) titles[1].textContent = b.subtitle || titles[1].textContent;
+        var bonusCards = document.querySelectorAll('.bonuses .bonus-card');
+        (b.cards || []).forEach(function (c, i) { if (bonusCards[i]) { bonusCards[i].querySelector('h3').innerHTML = (c.title || '').replace(/<br>/g, '<br>'); bonusCards[i].querySelector('p').innerHTML = (c.text || '').replace(/\n/g, '<br>'); } });
+      }
+      if (data.faq && data.faq.items) {
+        var items = document.querySelectorAll('.faq .faq-item');
+        data.faq.items.forEach(function (it, i) {
+          if (items[i]) {
+            items[i].querySelector('.faq-item__question').textContent = it.q || '';
+            items[i].querySelector('.faq-item__answer').innerHTML = (it.a || '').replace(/\n/g, '<br>');
+          }
+        });
+      }
+    })
+    .catch(function () {});
+})();

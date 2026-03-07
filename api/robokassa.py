@@ -17,6 +17,17 @@ from urllib.parse import urlencode
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "21day-promo-secret-change-in-prod")
+app.config["SESSION_COOKIE_HTTPONLY"] = True
+app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
+
+from admin_routes import admin_bp
+from admin_db import init_db, add_payment, referral_exists
+
+app.register_blueprint(admin_bp)
+
+# Инициализация БД админки при старте
+init_db()
 
 MERCHANT_LOGIN = os.environ.get("ROBOKASSA_LOGIN", "21dayCLUB")
 PASSWORD1 = os.environ.get("ROBOKASSA_PASS1", "")
@@ -50,7 +61,10 @@ def create_payment():
     name = data.get("name", "")
     email = data.get("email", "")
     phone = data.get("phone", "")
+    ref = (data.get("ref") or "").strip().lower()
     origin = (data.get("origin") or "").rstrip("/")
+    if ref and not referral_exists(ref):
+        ref = ""
     if origin not in ("https://promo.21day.club", "http://promo.21day.club"):
         origin = BASE_URL
 
@@ -60,11 +74,15 @@ def create_payment():
     out_sum = PRICES[plan]
     inv_id = int(time.time() * 1000)
 
-    # Shp_ в алфавитном порядке для подписи: email, name, phone, plan
+    # Shp_ в алфавитном порядке: email, name, phone, plan, ref
     shp_email = (email or "")[:50]
     shp_name = (name or "")[:50]
     shp_phone = (phone or "")[:30]
-    sign_str = f"{MERCHANT_LOGIN}:{out_sum}:{inv_id}:{PASSWORD1}:Shp_email={shp_email}:Shp_name={shp_name}:Shp_phone={shp_phone}:Shp_plan={plan}"
+    shp_ref = (ref or "")[:30]
+    sign_parts = [f"Shp_email={shp_email}", f"Shp_name={shp_name}", f"Shp_phone={shp_phone}", f"Shp_plan={plan}"]
+    if shp_ref:
+        sign_parts.append(f"Shp_ref={shp_ref}")
+    sign_str = f"{MERCHANT_LOGIN}:{out_sum}:{inv_id}:{PASSWORD1}:" + ":".join(sign_parts)
     signature = md5_signature(sign_str)
 
     params = {
@@ -81,6 +99,8 @@ def create_payment():
         "Shp_phone": shp_phone,
         "Shp_plan": plan,
     }
+    if shp_ref:
+        params["Shp_ref"] = shp_ref
     if IS_TEST:
         params["IsTest"] = 1
 
@@ -102,9 +122,9 @@ def robokassa_result():
     shp_name = data.get("Shp_name", "")
     shp_phone = data.get("Shp_phone", "")
     shp_plan = data.get("Shp_plan", "")
+    shp_ref = data.get("Shp_ref", "")
 
-    # Подпись: OutSum:InvId:Password2[:Shp_* в том же порядке, что при создании]
-    # Мы передавали Shp_email, Shp_name, Shp_phone, Shp_plan (алфавитный порядок)
+    # Подпись: OutSum:InvId:Password2[:Shp_* в алфавитном порядке]
     parts = [out_sum, inv_id, PASSWORD2]
     if shp_email:
         parts.append(f"Shp_email={shp_email}")
@@ -114,18 +134,32 @@ def robokassa_result():
         parts.append(f"Shp_phone={shp_phone}")
     if shp_plan:
         parts.append(f"Shp_plan={shp_plan}")
+    if shp_ref:
+        parts.append(f"Shp_ref={shp_ref}")
     sign_str = ":".join(parts)
     expected = md5_signature(sign_str)
 
     if signature.upper() != expected:
         return "bad sign", 200  # Robokassa требует 200, иначе повторяет
 
-    app.logger.info(f"Payment OK: inv_id={inv_id} email={shp_email} plan={shp_plan} sum={out_sum}")
+    init_db()
+    add_payment(
+        inv_id=int(inv_id) if inv_id else 0,
+        email=shp_email,
+        name=shp_name,
+        phone=shp_phone,
+        plan=shp_plan,
+        out_sum=float(out_sum or 0),
+        ref_code=shp_ref or None,
+    )
+
+    app.logger.info(f"Payment OK: inv_id={inv_id} email={shp_email} plan={shp_plan} sum={out_sum} ref={shp_ref or '-'}")
 
     # Оповещение в Telegram
     if TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_IDS:
         plan_label = "14 дней" if shp_plan == "14" else "21 день"
         out_sum_fmt = str(int(float(out_sum))) if out_sum else "0"
+        ref_line = f"\nРеферал: {shp_ref}" if shp_ref else ""
         text = (
             f"💰 Новая оплата!\n\n"
             f"Имя: {shp_name}\n"
@@ -133,7 +167,7 @@ def robokassa_result():
             f"Тариф: {plan_label}\n"
             f"Email: {shp_email}\n"
             f"Телефон: {shp_phone}\n"
-            f"Заказ: #{inv_id}"
+            f"Заказ: #{inv_id}{ref_line}"
         )
         _send_telegram(text)
 
@@ -195,6 +229,14 @@ def _send_telegram(text: str) -> None:
             app.logger.warning(f"Telegram HTTP {e.code} to {chat_id}: {body}")
         except Exception as e:
             app.logger.warning(f"Telegram send failed to {chat_id}: {e}")
+
+
+@app.route("/api/content.json", methods=["GET"])
+def content_json():
+    """Публичный контент для главной страницы (редактируется в админке)."""
+    path = os.path.join(os.path.dirname(__file__), "content.json")
+    with open(path, "r", encoding="utf-8") as f:
+        return jsonify(json.load(f))
 
 
 @app.route("/api/health", methods=["GET"])
