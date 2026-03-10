@@ -45,7 +45,7 @@ SMTP_PASS = os.environ.get("SMTP_PASS", "")
 EMAIL_FROM = os.environ.get("EMAIL_FROM", "info@i-integrator.com")
 EMAIL_FROM_NAME = os.environ.get("EMAIL_FROM_NAME", "21 день с ИИ")
 
-PRICES = {"14": 6500, "21": 8500}
+PRICES = {"14": 10500, "21": 14500}
 ROBOKASSA_URL = "https://auth.robokassa.ru/Merchant/Index.aspx"
 
 
